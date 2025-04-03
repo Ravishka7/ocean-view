@@ -4,7 +4,7 @@ import { Facebook, Instagram, Twitter, MessageCircle } from "lucide-react"
 
 export default function Footer() {
   return (
-    (<footer className="bg-gray-100 text-gray-600">
+    (<footer className="bg-blue-900 text-white">
       <div className="container mx-auto px-6 py-12">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           {/* Logo and Mission */}
@@ -13,8 +13,7 @@ export default function Footer() {
             <img src="/assets/navigation/logo.png" alt="logo" className="w-40 h-auto"/>
             </a>
             <p className="text-sm">
-              Our mission is to equip modern explorers with cutting-edge, functional, and stylish
-              bags that elevate every adventure.
+              
             </p>
           </div>
 
@@ -25,16 +24,6 @@ export default function Footer() {
               <li>
                 <a href="/about" className="hover:text-gray-900 transition-colors">
                   About Us
-                </a>
-              </li>
-              <li>
-                <a href="/blog" className="hover:text-gray-900 transition-colors">
-                  Blog
-                </a>
-              </li>
-              <li>
-                <a href="/career" className="hover:text-gray-900 transition-colors">
-                  Career
                 </a>
               </li>
             </ul>
@@ -49,31 +38,13 @@ export default function Footer() {
                   Contact Us
                 </a>
               </li>
-              <li>
-                <a href="/return" className="hover:text-gray-900 transition-colors">
-                  Return
-                </a>
-              </li>
-              <li>
-                <a href="/faq" className="hover:text-gray-900 transition-colors">
-                  FAQ
-                </a>
-              </li>
             </ul>
           </div>
 
           {/* Newsletter and Social */}
           <div className="space-y-4">
             <h3 className="text-lg font-semibold text-gray-900">Get Updates</h3>
-            <form className="flex gap-2">
-              <Input
-                type="email"
-                placeholder="Enter your email"
-                className="bg-white border-gray-300 text-gray-900 placeholder:text-gray-400" />
-              <Button type="submit" variant="default">
-                Subscribe
-              </Button>
-            </form>
+            
             <div className="flex gap-4">
               <a
                 href="https://instagram.com"
@@ -105,7 +76,7 @@ export default function Footer() {
 
         {/* Bottom Bar */}
         <div
-          className="flex flex-col md:flex-row justify-between items-center pt-8 mt-8 border-t border-gray-200">
+          className="flex flex-col md:flex-row justify-between items-center pt-6  border-t border-gray-200">
           <p className="text-sm">©2025 Ocean View. All rights reserved.</p>
           <div className="flex gap-4 mt-4 md:mt-0">
             <a href="/privacy" className="text-sm hover:text-gray-900 transition-colors">

@@ -1,3 +1,5 @@
+import { Link } from "react-router";
+
 function Navigation() {
     const name = "Ravishka";
     return (
@@ -5,17 +7,20 @@ function Navigation() {
         <div className="flex items-center gap-x-16">
           
           <div className="flex items-center gap-x-4">
-            <a href="/">Home</a>
-            <a href="/shop">Resevations</a>
-            <a href="/">Our Trips</a>
+            <Link to="/" className="text-white">Home</Link>
+            <Link to="/rooms" className="text-white">Accomodations</Link>
+            <Link to="/tours" className="text-white">Our Trips</Link>
           </div>
         </div>
+        <div className="flex items-center gap-x-4">
         <a href="/" className="flex items-center">
             <img src="/assets/navigation/logo.png" alt="logo" className="w-20 h-auto"/>
           </a>
+        </div>
+        
         
         <div className="flex items-center gap-x-8">
-          <p>Hi, {name}</p>
+          <p className="text-white">Hi, {name}</p>
         </div>
       </nav>
     );

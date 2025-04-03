@@ -12,10 +12,9 @@ function Gallery () {
                         Nestled a mere 100 meters from the pristine shores of Negombo Beach, we redefine coastal luxury and relaxation.
                     </p>
                     
-                    <a href="/shop" className="px-4 py-2 text-white font-medium bg-blue-900 rounded w-fit">Book Now</a>
                 </div>
                 <div className="relative">
-                    <img src="/assets/room/room_1.jpg" alt="" className="w-full h-full object-cover"/>
+                    <img src="/assets/food/food_1.jpg" alt="" className="w-full h-full object-cover"/>
                 </div>
             </div>
         </section>

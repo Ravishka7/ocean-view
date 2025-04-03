@@ -25,7 +25,6 @@ function App() {
       <Gallery />
       <Location />
       <Footer />
-
     </>
   )
 }
