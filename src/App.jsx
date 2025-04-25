@@ -16,7 +16,7 @@ function App() {
         <img
           src="/assets/hero/beach_hero.jpg"
           alt=""
-          className="absolute top-0 left-0 w-full h-full object-cover -z-10"
+          className="absolute top-0 left-0 w-full h-1 object-cover -z-10"
         />
       </div>
       <Introduction />

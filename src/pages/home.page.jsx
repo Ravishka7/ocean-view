@@ -2,7 +2,6 @@ import Hero from "@/components/Hero"
 import Introduction from "@/components/Introduction"
 import Reservations from "@/components/Reservations"
 import Tours from "@/components/Tours"
-import Location from "@/components/Location"
 import GalleryGrid from "@/components/GalleryGrid"
 
 function HomePage() {
