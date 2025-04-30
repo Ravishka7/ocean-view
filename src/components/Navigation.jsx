@@ -1,7 +1,10 @@
 import { Link } from "react-router";
+import { useSelector } from "react-redux";
 
 function Navigation() {
-    const name = "Ravishka";
+    const userSlice = useSelector((state) => state.user);
+    console.log(userSlice);
+    
     return (
         <nav className="flex items-center justify-between py-4 px-16 bg-blue-900">
         <div className="flex items-center gap-x-16">
@@ -20,7 +23,7 @@ function Navigation() {
         
         
         <div className="flex items-center gap-x-8">
-          <p className="text-white">Hi, {name}</p>
+          <p className="text-white">Hi, {userSlice.user.name}</p>
         </div>
       </nav>
     );
