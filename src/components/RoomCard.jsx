@@ -1,8 +1,9 @@
 import { MapPin, Star } from "lucide-react";
+import { Link } from "react-router";
 
 function RoomCard(props) {
-    return ( <a
-        href={`/rooms/${props.room._id}`}
+    return ( <Link
+        to={`/rooms/${props.room._id}`}
         key={props.room._id}
         className="block group relative"
       >
@@ -22,7 +23,7 @@ function RoomCard(props) {
             <span className="text-xl font-bold">${props.room.price}</span>
           </div>
         </div>
-      </a>
+      </Link>
         
     );
 }

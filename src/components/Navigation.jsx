@@ -2,8 +2,7 @@ import { Link } from "react-router";
 import { useSelector } from "react-redux";
 
 function Navigation() {
-    const userSlice = useSelector((state) => state.user);
-    console.log(userSlice);
+    
     
     return (
         <nav className="flex items-center justify-between py-4 px-16 bg-blue-900">
@@ -22,9 +21,9 @@ function Navigation() {
         </div>
         
         
-        <div className="flex items-center gap-x-8">
+        {/* <div className="flex items-center gap-x-8">
           <p className="text-white">Hi, {userSlice.user.name}</p>
-        </div>
+        </div> */}
       </nav>
     );
 }

@@ -1,24 +1,10 @@
-import { useState, useEffect } from "react";
 import RoomCard from "./RoomCard";
-import { getRooms } from "@/lib/api/rooms.js";
+import { useGetRoomsQuery } from "@/lib/api";
 
 export default function RoomListings() {
-   
-  const [rooms, setRooms] = useState([]); 
-  const [isLoading, setIsLoading] = useState(true);
-  const [error, setError] = useState(""); 
 
-
-  useEffect(() => {
-    getRooms()
-    .then((data) => {
-      setRooms(data);
-    }).catch((error) => {
-      setError(error.message);
-    }).finally(() => {
-      setIsLoading(false);
-    });
-  }, []);
+  const { data: rooms, isLoading, error } = useGetRoomsQuery();
+    
 
   if (isLoading) {
     return(<section className="px-8 py-8 lg:py-16">
@@ -66,7 +52,7 @@ export default function RoomListings() {
           Standard Rooms with modern amenities
         </p>
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-10">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8 mx-4 px-14">
         
       {
         rooms.map((room) => {

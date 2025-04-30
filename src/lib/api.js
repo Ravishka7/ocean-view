@@ -2,7 +2,7 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
 const BACKEND_URL = "http://localhost:8000";
 
-export const api = createApi({
+export const Api = createApi({
     reducerPath: "api",
     baseQuery: fetchBaseQuery({ baseUrl: `${BACKEND_URL}/api/` }),
     endpoints: (builder) => ({
@@ -26,4 +26,4 @@ export const {
     useGetTourByIdQuery,
     useGetRoomsQuery,
     useGetRoomByIdQuery,
-} = api;
+} = Api;

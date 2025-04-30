@@ -1,23 +1,11 @@
-import { useState, useEffect } from "react";
 import TourCard from "./TourCard";
-import { getTours } from "@/lib/api/tours";
+import { useGetToursQuery } from "@/lib/api";
 
 
 export default function TourListings() {
-  const [tours, setTours] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
-  const [error, setError] = useState(""); 
+
+  const { data: tours, isLoading, error } = useGetToursQuery();
   
-  useEffect(() => {
-    getTours()
-    .then((data) => {
-      setTours(data);
-    }).catch((error) => {
-      setError(error.message);
-    }).finally(() => {
-      setIsLoading(false);
-    });
-  }, []);
 
   if (isLoading) {
     return (<section className="px-8 py-8 lg:py-16">

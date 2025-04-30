@@ -1,8 +1,9 @@
 import { MapPin, Star } from "lucide-react";
+import { Link } from "react-router";
 
 function TourCard(props) {
-    return ( <a
-        href={`/tours/${props.tour._id}`}
+    return ( <Link
+        to={`/tours/${props.tour._id}`}
         key={props.tour._id}
         className="block group relative"
       >
@@ -16,16 +17,16 @@ function TourCard(props) {
 
         <div className="mt-3 space-y-2">
           <h3 className="font-semibold text-lg">{props.tour.name}</h3>
-          <div className="flex items-center text-muted-foreground">
+          {/* <div className="flex items-center text-muted-foreground">
             <MapPin className="h-4 w-4 mr-1" />
             <span>{props.tour.location}</span>
           </div>
           
           <div className="flex items-baseline space-x-2">
             <span className="text-xl font-bold">${props.tour.price}</span>
-          </div>
+          </div> */}
         </div>
-      </a>
+      </Link>
         
     );
 }
