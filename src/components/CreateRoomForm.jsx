@@ -12,23 +12,24 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { useCreateTourMutation } from "@/lib/api";
+import { useCreateRoomMutation } from "@/lib/api";
 import { toast } from "sonner";
 
 const formSchema = z.object({
-  name: z.string().min(1, { message: "Tour Name is required" }),
-  description: z.string().min(1, { message: "Tour Description is required" }),
-  image: z.string().min(1, { message: "Tour Image is required" }),
+  name: z.string().min(1, { message: "Room Name is required" }),
+  description: z.string().min(1, { message: "Room Description is required" }),
+  image: z.string().min(1, { message: "Room Image is required" }),
+  price: z.number().min(1, { message: "Room Price is required" }),
   carouselImages: z.array(z.string()).min(1, { message: "Carousel Images are required" }),
 });
 
-const CreateTourForm = () => {
-    const [createTour, {isLoading}] = useCreateTourMutation();
+const CreateRoomForm = () => {
+    const [createRoom, {isLoading}] = useCreateRoomMutation();
     const form = useForm ({
-       resolver: zodResolver(formSchema),
-    })
+        resolver: zodResolver(formSchema),
+     })
 
-    // Custom handler for converting string to array
+     // Custom handler for converting string to array
   const handleCarouselImagesChange = (event) => {
     const value = event.target.value;
 
@@ -42,28 +43,29 @@ const CreateTourForm = () => {
     form.setValue("carouselImages", carouselImagesArray);
   };
 
-  // Handle form submission
   const handleSubmit = async (values) => {
-    const { name, description, image, carouselImages } = values;
+    const { name, description, image, price, carouselImages } = values;
 
-    const toastId = toast.loading("Creating tour...");
+    const toastId = toast.loading("Creating room...");
+
     try {
         toastId;
-        await createTour({
+        await createRoom({
             name,
             description,
             image,
+            price,
             carouselImages,
         }).unwrap();
         toast.dismiss(toastId);
-        toast.success("Tour created successfully!");
+        toast.success("Room created successfully!");
+
+        
     } catch (error) {
         toast.dismiss(toastId);
-        toast.error("Failed to create tour. Please try again.");
+        toast.error("Failed to create room. Please try again.");
     }
   };
-
-
     return(
         <Form {...form}>
             <form onSubmit={form.handleSubmit(handleSubmit)} className="w-1/2">
@@ -73,9 +75,9 @@ const CreateTourForm = () => {
                     name="name"
                     render={({ field }) => (
                         <FormItem>
-                        <FormLabel>Tour Name</FormLabel>
+                        <FormLabel>Room Name</FormLabel>
                         <FormControl>
-                            <Input placeholder="Enter the name of the tour" {...field} />
+                            <Input placeholder="Enter the name of the room" {...field} />
                         </FormControl>
                         <FormMessage />
                         </FormItem>
@@ -86,9 +88,9 @@ const CreateTourForm = () => {
                     name="description"
                     render={({ field }) => (
                         <FormItem>
-                        <FormLabel>Tour Description</FormLabel>
+                        <FormLabel>Room Description</FormLabel>
                         <FormControl>
-                            <Textarea placeholder="Enter the description of the tour" {...field} />
+                            <Textarea placeholder="Enter the description of the room" {...field} />
                         </FormControl>
                         <FormMessage />
                         </FormItem>
@@ -99,9 +101,28 @@ const CreateTourForm = () => {
                     name="image"
                     render={({ field }) => (
                         <FormItem>
-                        <FormLabel>Tour Image</FormLabel>
+                        <FormLabel>Room Image</FormLabel>
                         <FormControl>
-                            <Input placeholder="Enter the URL of the tour image" {...field} />
+                            <Input placeholder="Enter the URL of the room image" {...field} />
+                        </FormControl>
+                        <FormMessage />
+                        </FormItem>
+                    )}
+                />
+                <FormField
+                    control={form.control}
+                    name="price"
+                    render={({ field }) => (
+                        <FormItem>
+                        <FormLabel>Room Price</FormLabel>
+                        <FormControl>
+                            <Input 
+                            placeholder="Enter the price of the room" 
+                            type="number" 
+                            onChange={(e) => {
+                                field.onChange(parseFloat(e.target.value));
+                            }}
+                            value={field.value} />
                         </FormControl>
                         <FormMessage />
                         </FormItem>
@@ -112,7 +133,7 @@ const CreateTourForm = () => {
                     name="carouselImages"
                     render={({ field }) => (
                         <FormItem>
-                        <FormLabel>Tour Carousel Images</FormLabel>
+                        <FormLabel>Room Carousel Images</FormLabel>
                         <FormControl>
                             <Textarea placeholder="Enter the URLs of the tour carousel images (comma separated)" {...field} onChange={handleCarouselImagesChange} />
                         </FormControl>
@@ -124,14 +145,12 @@ const CreateTourForm = () => {
 
                 <div className="mt-4">
                     <Button type="submit">
-                        Add New Tour
+                        Add New Room
                     </Button>
                 </div>
             </form>
         </Form>
-    )    
-
-
+    )
 };
 
-export default CreateTourForm;
+export default CreateRoomForm;

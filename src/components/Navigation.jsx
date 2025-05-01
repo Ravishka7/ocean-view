@@ -12,8 +12,7 @@ function Navigation() {
             <Link to="/" className="text-white">Home</Link>
             <Link to="/rooms" className="text-white">Accomodations</Link>
             <Link to="/tours" className="text-white">Our Trips</Link>
-            <Link to="/tours/create" className="text-white">Create Tour</Link>
-            <Link to="/rooms/create" className="text-white">Create Room</Link>
+            <Link to="/admin" className="text-white">Admin</Link>
           </div>
         </div>
         <div className="flex items-center gap-x-4">
