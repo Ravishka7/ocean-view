@@ -18,6 +18,20 @@ export const Api = createApi({
         getRoomById: builder.query({
             query: (id) => `rooms/${id}`,
         }),
+        createTour: builder.mutation({
+            query: (tour) => ({
+                url: "tours",
+                method: "POST",
+                body: tour,
+            }),
+        }),
+        createRoom: builder.mutation({
+            query: (room) => ({
+                url: "rooms",
+                method: "POST",
+                body: room,
+            }),
+        }),
     }),
 });
 
@@ -26,4 +40,6 @@ export const {
     useGetTourByIdQuery,
     useGetRoomsQuery,
     useGetRoomByIdQuery,
+    useCreateTourMutation,
+    useCreateRoomMutation,
 } = Api;

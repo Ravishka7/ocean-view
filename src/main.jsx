@@ -12,6 +12,8 @@ import RoomsPage from './pages/rooms.page';
 import ToursPage from './pages/tours.page';
 import RoomPage from './pages/room.page';
 import TourPage from './pages/tour.page';
+import CreateTourPage from './pages/create-tour.page';
+import CreateRoomPage from './pages/create-room.page';
 
 import RootLayout from './layouts/root-layout.layout';
 import MainLayout from './layouts/main.layout';
@@ -29,6 +31,8 @@ createRoot(document.getElementById('root')).render(
               <Route path="/tours" element={<ToursPage />} />
               <Route path="/rooms/:id" element={<RoomPage />} />
               <Route path="/tours/:id" element={<TourPage />} />
+              <Route path="/tours/create" element={<CreateTourPage />} />
+              <Route path="/rooms/create" element={<CreateRoomPage />} />
             </Route>
 
             <Route path="/sign-in" element={<SignInPage />} />
