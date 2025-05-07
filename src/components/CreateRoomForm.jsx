@@ -20,7 +20,10 @@ const formSchema = z.object({
   description: z.string().min(1, { message: "Room Description is required" }),
   image: z.string().min(1, { message: "Room Image is required" }),
   price: z.number().min(1, { message: "Room Price is required" }),
-  carouselImages: z.array(z.string()).min(1, { message: "Carousel Images are required" }),
+  subImage_1: z.string().min(1, { message: "Sub Image required" }),
+  subImage_2: z.string().min(1, { message: "Sub Image required" }),
+  subImage_3: z.string().min(1, { message: "Sub Image required" }),
+
 });
 
 const CreateRoomForm = () => {
@@ -29,22 +32,9 @@ const CreateRoomForm = () => {
         resolver: zodResolver(formSchema),
      })
 
-     // Custom handler for converting string to array
-  const handleCarouselImagesChange = (event) => {
-    const value = event.target.value;
-
-    // Convert the comma-separated string to an array
-    const carouselImagesArray = value
-      .split(",") // Split by commas
-      .map((url) => url.trim()) // Trim spaces around the URLs
-      .filter((url) => url !== ""); // Remove empty strings
-
-    // Set the converted array to the form state
-    form.setValue("carouselImages", carouselImagesArray);
-  };
 
   const handleSubmit = async (values) => {
-    const { name, description, image, price, carouselImages } = values;
+    const { name, description, image, price, subImage_1, subImage_2, subImage_3 } = values;
 
     const toastId = toast.loading("Creating room...");
 
@@ -55,7 +45,10 @@ const CreateRoomForm = () => {
             description,
             image,
             price,
-            carouselImages,
+            subImage_1,
+            subImage_2,
+            subImage_3,
+
         }).unwrap();
         toast.dismiss(toastId);
         toast.success("Room created successfully!");
@@ -130,12 +123,38 @@ const CreateRoomForm = () => {
                 />
                 <FormField
                     control={form.control}
-                    name="carouselImages"
+                    name="subImage_1"
                     render={({ field }) => (
                         <FormItem>
-                        <FormLabel>Room Carousel Images</FormLabel>
+                        <FormLabel>Sub Image 1</FormLabel>
                         <FormControl>
-                            <Textarea placeholder="Enter the URLs of the tour carousel images (comma separated)" {...field} onChange={handleCarouselImagesChange} />
+                            <Input placeholder="Enter the URL of the room image" {...field} />
+                        </FormControl>
+                        <FormMessage />
+                        </FormItem>
+                    )}
+                />
+                <FormField
+                    control={form.control}
+                    name="subImage_2"
+                    render={({ field }) => (
+                        <FormItem>
+                        <FormLabel>Sub Image 2</FormLabel>
+                        <FormControl>
+                            <Input placeholder="Enter the URL of the room image" {...field} />
+                        </FormControl>
+                        <FormMessage />
+                        </FormItem>
+                    )}
+                />
+                <FormField
+                    control={form.control}
+                    name="subImage_3"
+                    render={({ field }) => (
+                        <FormItem>
+                        <FormLabel>Sub Image 3</FormLabel>
+                        <FormControl>
+                            <Input placeholder="Enter the URL of the room image" {...field} />
                         </FormControl>
                         <FormMessage />
                         </FormItem>

@@ -1,11 +1,12 @@
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { Outlet } from "react-router";
+import Navigations from "@/components/Navigation2";
 
 function MainLayout() {
     return ( 
         <>
-         <Navigation />
+         <Navigations />
          <Outlet />
          <Footer />
         </>   

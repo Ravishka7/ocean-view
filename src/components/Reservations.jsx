@@ -16,7 +16,7 @@ function Reservations () {
                         
                         <div className="space-y-4">
                         <div>
-                            <h1 className="text-4xl font-bold mb-2">
+                            <h1 className="text-4xl font-semibold text-blue-900 mb-2">
                             Stay With Us
                             </h1><br/>
                             
@@ -55,7 +55,7 @@ function Reservations () {
               <h3 className="text-lg font-medium text-white mb-2">
                 With
               </h3>
-              <p className="text-5xl font-bold text-white">Modern Ameneties</p>
+              <p className="text-5xl font-bold text-white">Modern Amenities</p>
             </div>
             <img
               src="/assets/room/room_1.jpg"

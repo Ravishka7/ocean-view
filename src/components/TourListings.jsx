@@ -10,7 +10,7 @@ export default function TourListings() {
   if (isLoading) {
     return (<section className="px-8 py-8 lg:py-16">
       <div className="mb-12">
-        <h2 className="text-3xl md:text-4xl font-bold mb-4">
+        <h2 className="text-3xl md:text-4xl font-bold mb-4 text-blue-900">
           Tours
         </h2>
         <p className="text-lg text-muted-foreground">
@@ -30,7 +30,7 @@ export default function TourListings() {
   if (error) {
     return (<section className="px-8 py-8 lg:py-16">
       <div className="mb-12">
-        <h2 className="text-3xl md:text-4xl font-bold mb-4">
+        <h2 className="text-3xl md:text-4xl font-bold mb-4 text-blue-900">
           Tours
         </h2>
         <p className="text-lg text-muted-foreground">
@@ -50,7 +50,7 @@ export default function TourListings() {
   return (
     <section className="px-8 py-8 lg:py-16">
       <div className="mb-12">
-        <h2 className="text-3xl md:text-4xl font-bold mb-4">
+        <h2 className="text-3xl md:text-4xl font-bold mb-4 text-blue-900">
           Tours
         </h2>
         <p className="text-lg text-muted-foreground">
@@ -58,7 +58,7 @@ export default function TourListings() {
         </p>
         
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
       {
         tours.map((tour) => {
             return (<TourCard key={tour._id} tour={tour} />)

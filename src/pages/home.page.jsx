@@ -1,8 +1,8 @@
 import Hero from "@/components/Hero"
-import Introduction from "@/components/Introduction"
 import Reservations from "@/components/Reservations"
 import Tours from "@/components/Tours"
 import GalleryGrid from "@/components/GalleryGrid"
+import Intro from "@/components/Intro"
 
 function HomePage() {
   return (
@@ -15,7 +15,7 @@ function HomePage() {
           className="absolute top-0 left-0 w-full h-full object-cover -z-10"
         />
       </div>
-      <Introduction />
+      <Intro />
       <Reservations />
       <Tours />
       <GalleryGrid />

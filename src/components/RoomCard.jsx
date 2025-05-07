@@ -1,4 +1,3 @@
-import { MapPin, Star } from "lucide-react";
 import { Link } from "react-router";
 
 function RoomCard(props) {

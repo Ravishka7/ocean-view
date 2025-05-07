@@ -10,7 +10,7 @@ function Introduction () {
                         
                         <div className="space-y-4">
                         <div>
-                            <h1 className="text-4xl font-bold mb-2 justify-center text-center">
+                            <h1 className="text-4xl text-blue-900 font-semibold font-bold mb-2 justify-center text-center">
                             Welcome to your luxurious home away from home
                             </h1><br/>
                             

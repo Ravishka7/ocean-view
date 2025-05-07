@@ -15,9 +15,14 @@ import RoomPage from './pages/room.page';
 import TourPage from './pages/tour.page';
 import CreateTourPage from './pages/create-tour.page';
 import CreateRoomPage from './pages/create-room.page';
+import AdminTourListPage from './pages/adminTourList.page';
+import UpdateTourPage from './pages/update-tour.page';
+import AdminRoomListPage from './pages/adminRoomList.page';
+import UpdateRoomPage from './pages/update-room.page';
 
 import RootLayout from './layouts/root-layout.layout';
 import MainLayout from './layouts/main.layout';
+
 
 
 createRoot(document.getElementById('root')).render(
@@ -36,6 +41,10 @@ createRoot(document.getElementById('root')).render(
               <Route path="/tours/:id" element={<TourPage />} />
               <Route path="/tours/create" element={<CreateTourPage />} />
               <Route path="/rooms/create" element={<CreateRoomPage />} />
+              <Route path="/tours/update" element={<AdminTourListPage />} />
+              <Route path="/tours/update/:id" element={<UpdateTourPage />} />
+              <Route path="rooms/update" element={<AdminRoomListPage />} />
+              <Route path="/rooms/update/:id" element={<UpdateRoomPage />} />
 
             </Route>
 
