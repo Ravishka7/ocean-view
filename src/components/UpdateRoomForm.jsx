@@ -14,9 +14,8 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { useCreateRoomMutation, useUpdateRoomMutation } from "@/lib/api";
+import { useUpdateRoomMutation } from "@/lib/api";
 import { toast } from "sonner";
-import { Delete } from "lucide-react";
 import DeleteRoom from "./DeleteRoom";
 
 const formSchema = z.object({

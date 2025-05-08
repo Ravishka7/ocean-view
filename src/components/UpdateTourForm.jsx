@@ -14,8 +14,9 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { useCreateTourMutation, useUpdateTourMutation } from "@/lib/api";
+import { useUpdateTourMutation } from "@/lib/api";
 import { toast } from "sonner";
+import DeleteTour from "./DeleteTour"; // Import the DeleteTour component
 
 const formSchema = z.object({
   name: z.string().min(1, { message: "Tour Name is required" }),
@@ -149,11 +150,20 @@ const UpdateTourForm = () => {
           )} />
         </div>
 
-        <div className="mt-4">
-          <Button type="submit" disabled={isLoading}>
-            {isLoading ? "Updating..." : "Update Tour"}
-          </Button>
-        </div>
+        <div className="mt-4 grid grid-cols-2 gap-4">
+  <div>
+    <Button
+      type="submit"
+      disabled={isLoading}
+      className="w-full py-2 px-4 text-white bg-blue-600 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-50 disabled:bg-blue-300 disabled:cursor-not-allowed transition duration-300"
+    >
+      {isLoading ? "Updating..." : "Update Tour"}
+    </Button>
+  </div>
+  <div>
+    <DeleteTour id={id} className="w-full py-2 px-4 text-white bg-red-600 rounded-lg hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-400 focus:ring-opacity-50 transition duration-300" />
+  </div>
+</div>
       </form>
     </Form>
   );
