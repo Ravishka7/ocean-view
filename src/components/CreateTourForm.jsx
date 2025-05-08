@@ -1,6 +1,7 @@
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
+import { useNavigate } from "react-router";
 import { Button } from "@/components/ui/button";
 import {
   Form,
@@ -19,32 +20,21 @@ const formSchema = z.object({
   name: z.string().min(1, { message: "Tour Name is required" }),
   description: z.string().min(1, { message: "Tour Description is required" }),
   image: z.string().min(1, { message: "Tour Image is required" }),
-  carouselImages: z.array(z.string()).min(1, { message: "Carousel Images are required" }),
+  subImage_1: z.string().min(1, { message: "Sub Image required" }),
+  subImage_2: z.string().min(1, { message: "Sub Image required" }),
+  subImage_3: z.string().min(1, { message: "Sub Image required" }),
 });
 
 const CreateTourForm = () => {
     const [createTour, {isLoading}] = useCreateTourMutation();
+    const navigate = useNavigate();
     const form = useForm ({
        resolver: zodResolver(formSchema),
     })
 
-    // Custom handler for converting string to array
-  const handleCarouselImagesChange = (event) => {
-    const value = event.target.value;
-
-    // Convert the comma-separated string to an array
-    const carouselImagesArray = value
-      .split(",") // Split by commas
-      .map((url) => url.trim()) // Trim spaces around the URLs
-      .filter((url) => url !== ""); // Remove empty strings
-
-    // Set the converted array to the form state
-    form.setValue("carouselImages", carouselImagesArray);
-  };
-
   // Handle form submission
   const handleSubmit = async (values) => {
-    const { name, description, image, carouselImages } = values;
+    const { name, description, image, subImage_1, subImage_2, subImage_3 } = values;
 
     const toastId = toast.loading("Creating tour...");
     try {
@@ -53,10 +43,13 @@ const CreateTourForm = () => {
             name,
             description,
             image,
-            carouselImages,
+            subImage_1,
+            subImage_2,
+            subImage_3,
         }).unwrap();
         toast.dismiss(toastId);
         toast.success("Tour created successfully!");
+        navigate("/tours");
     } catch (error) {
         toast.dismiss(toastId);
         toast.error("Failed to create tour. Please try again.");
@@ -109,12 +102,38 @@ const CreateTourForm = () => {
                 />
                 <FormField
                     control={form.control}
-                    name="carouselImages"
+                    name="subImage_1"
                     render={({ field }) => (
                         <FormItem>
-                        <FormLabel>Tour Carousel Images</FormLabel>
+                        <FormLabel>Sub Image 1</FormLabel>
                         <FormControl>
-                            <Textarea placeholder="Enter the URLs of the tour carousel images (comma separated)" {...field} onChange={handleCarouselImagesChange} />
+                            <Input placeholder="Enter the URL of the room image" {...field} />
+                        </FormControl>
+                        <FormMessage />
+                        </FormItem>
+                    )}
+                />
+                <FormField
+                    control={form.control}
+                    name="subImage_2"
+                    render={({ field }) => (
+                        <FormItem>
+                        <FormLabel>Sub Image 2</FormLabel>
+                        <FormControl>
+                            <Input placeholder="Enter the URL of the room image" {...field} />
+                        </FormControl>
+                        <FormMessage />
+                        </FormItem>
+                    )}
+                />
+                <FormField
+                    control={form.control}
+                    name="subImage_3"
+                    render={({ field }) => (
+                        <FormItem>
+                        <FormLabel>Sub Image 3</FormLabel>
+                        <FormControl>
+                            <Input placeholder="Enter the URL of the room image" {...field} />
                         </FormControl>
                         <FormMessage />
                         </FormItem>

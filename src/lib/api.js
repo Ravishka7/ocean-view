@@ -41,9 +41,21 @@ export const Api = createApi({
         }),
         updateRoom: builder.mutation({
             query: ({ id, ...room }) => ({
-                url: `rooms/update/${id}`,
+                url: `rooms/${id}`,
                 method: "PUT",
                 body: room,
+            }),
+        }),
+        deleteTour: builder.mutation({
+            query: (id) => ({
+                url: `tours/${id}`,
+                method: "DELETE",
+            }),
+        }),
+        deleteRoom: builder.mutation({
+            query: (id) => ({
+                url: `rooms/${id}`,
+                method: "DELETE",
             }),
         }),
     }),
@@ -58,4 +70,6 @@ export const {
     useCreateRoomMutation,
     useUpdateTourMutation,
     useUpdateRoomMutation,
+    useDeleteTourMutation,
+    useDeleteRoomMutation,
 } = Api;

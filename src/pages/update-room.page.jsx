@@ -1,3 +1,4 @@
+import DeleteRoom from "@/components/DeleteRoom";
 import UpdateRoomForm from "@/components/UpdateRoomForm";
 
 export default function UpdateRoomPage() {
@@ -7,6 +8,7 @@ export default function UpdateRoomPage() {
                 Update Room
             </h2>
             <UpdateRoomForm />
+            
         </main>
     )
 }
