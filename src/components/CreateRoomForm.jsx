@@ -1,6 +1,7 @@
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
+import { useNavigate } from "react-router";
 import { Button } from "@/components/ui/button";
 import {
   Form,
@@ -20,21 +21,18 @@ const formSchema = z.object({
   description: z.string().min(1, { message: "Room Description is required" }),
   image: z.string().min(1, { message: "Room Image is required" }),
   price: z.number().min(1, { message: "Room Price is required" }),
-  subImage_1: z.string().min(1, { message: "Sub Image required" }),
-  subImage_2: z.string().min(1, { message: "Sub Image required" }),
-  subImage_3: z.string().min(1, { message: "Sub Image required" }),
-
 });
 
 const CreateRoomForm = () => {
     const [createRoom, {isLoading}] = useCreateRoomMutation();
+    const navigate = useNavigate();
     const form = useForm ({
         resolver: zodResolver(formSchema),
      })
 
 
   const handleSubmit = async (values) => {
-    const { name, description, image, price, subImage_1, subImage_2, subImage_3 } = values;
+    const { name, description, image, price } = values;
 
     const toastId = toast.loading("Creating room...");
 
@@ -45,15 +43,11 @@ const CreateRoomForm = () => {
             description,
             image,
             price,
-            subImage_1,
-            subImage_2,
-            subImage_3,
-
         }).unwrap();
         toast.dismiss(toastId);
         toast.success("Room created successfully!");
-
-        
+        navigate("/rooms");
+   
     } catch (error) {
         toast.dismiss(toastId);
         toast.error("Failed to create room. Please try again.");
@@ -121,45 +115,7 @@ const CreateRoomForm = () => {
                         </FormItem>
                     )}
                 />
-                <FormField
-                    control={form.control}
-                    name="subImage_1"
-                    render={({ field }) => (
-                        <FormItem>
-                        <FormLabel>Sub Image 1</FormLabel>
-                        <FormControl>
-                            <Input placeholder="Enter the URL of the room image" {...field} />
-                        </FormControl>
-                        <FormMessage />
-                        </FormItem>
-                    )}
-                />
-                <FormField
-                    control={form.control}
-                    name="subImage_2"
-                    render={({ field }) => (
-                        <FormItem>
-                        <FormLabel>Sub Image 2</FormLabel>
-                        <FormControl>
-                            <Input placeholder="Enter the URL of the room image" {...field} />
-                        </FormControl>
-                        <FormMessage />
-                        </FormItem>
-                    )}
-                />
-                <FormField
-                    control={form.control}
-                    name="subImage_3"
-                    render={({ field }) => (
-                        <FormItem>
-                        <FormLabel>Sub Image 3</FormLabel>
-                        <FormControl>
-                            <Input placeholder="Enter the URL of the room image" {...field} />
-                        </FormControl>
-                        <FormMessage />
-                        </FormItem>
-                    )}
-                />
+                
                 </div>
 
                 <div className="mt-4">

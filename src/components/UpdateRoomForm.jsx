@@ -23,9 +23,6 @@ const formSchema = z.object({
   description: z.string().min(1, { message: "Room Description is required" }),
   image: z.string().min(1, { message: "Room Image is required" }),
   price: z.number().min(1, { message: "Room Price is required" }),
-  subImage_1: z.string().min(1, { message: "Sub Image required" }),
-  subImage_2: z.string().min(1, { message: "Sub Image required" }),
-  subImage_3: z.string().min(1, { message: "Sub Image required" }),
 });
 
 const UpdateRoomForm = () => {
@@ -51,9 +48,6 @@ const UpdateRoomForm = () => {
         form.setValue("description", room.description);
         form.setValue("image", room.image);
         form.setValue("price", room.price);
-        form.setValue("subImage_1", room.subImage_1);
-        form.setValue("subImage_2", room.subImage_2);
-        form.setValue("subImage_3", room.subImage_3);
       } catch (error) {
         console.error(error);
         toast.error("Failed to fetch room data");
@@ -66,7 +60,7 @@ const UpdateRoomForm = () => {
   
 
   const handleSubmit = async (values) => {
-    const { name, description, image, price, subImage_1, subImage_2, subImage_3 } = values;
+    const { name, description, image, price } = values;
 
     const toastId = toast.loading("Updating room...");
 
@@ -78,9 +72,6 @@ const UpdateRoomForm = () => {
         description,
         image,
         price,
-        subImage_1,
-        subImage_2,
-        subImage_3,
       }).unwrap();
       toast.dismiss(toastId);
       toast.success("Room updated successfully!");
@@ -139,34 +130,7 @@ const UpdateRoomForm = () => {
               <FormMessage />
             </FormItem>
           )} />
-          {/* Add subImage fields similar to the above */}
-          <FormField control={form.control} name="subImage_1" render={({ field }) => (
-            <FormItem>
-              <FormLabel>Sub Image 1</FormLabel>
-              <FormControl>
-                <Input placeholder="Enter the URL of the sub image" {...field} />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )} />
-          <FormField control={form.control} name="subImage_2" render={({ field }) => (
-            <FormItem>
-              <FormLabel>Sub Image 2</FormLabel>
-              <FormControl>
-                <Input placeholder="Enter the URL of the sub image" {...field} />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )} />
-          <FormField control={form.control} name="subImage_3" render={({ field }) => (
-            <FormItem>
-              <FormLabel>Sub Image 3</FormLabel>
-              <FormControl>
-                <Input placeholder="Enter the URL of the sub image" {...field} />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )} />
+          
         </div>
 
         <div className="mt-4 grid grid-cols-2 gap-4">
