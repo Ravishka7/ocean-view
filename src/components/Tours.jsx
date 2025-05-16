@@ -11,7 +11,7 @@ function Tours() {
           {/* Left Column */}
           <div className="space-y-1">
             {/* Top Card (Text) */}
-            <div className="relative rounded-3xl p-8 h-auto flex flex-col justify-between bg-[#f4f8f9]">
+            <div className="relative rounded-3xl p-4 h-auto flex flex-col justify-between bg-[#f4f8f9]">
               <div className="space-y-4">
                 <div>
                 <AnimateOnScroll>
@@ -44,7 +44,7 @@ function Tours() {
 
             {/* Bottom Card (Image with Overlay Text) */}
             <AnimateOnScroll>
-            <div className="relative rounded-3xl h-[300px] overflow-hidden">
+            <div className="relative rounded-3xl h-[380px] overflow-hidden">
             {/* Background Image */}
             <img
               src="/assets/tour/tour_1.jpg"

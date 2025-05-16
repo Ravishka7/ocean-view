@@ -4,6 +4,8 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Skeleton } from "@/components/ui/skeleton";
+import { ScrollArea } from "@/components/ui/scroll-area"
+
 import {
   Coffee,
   MenuIcon as Restaurant,
@@ -136,7 +138,7 @@ const TourPage = () => {
               <h3 className="sr-only">Description</h3>
 
               <div className="space-y-6">
-                <p className="text-base text-gray-900">{tour.description}</p>
+                <ScrollArea className="text-gray-900 h-[400px] whitespace-pre-wrap">{tour.description}</ScrollArea>
               </div>
             </div>
 

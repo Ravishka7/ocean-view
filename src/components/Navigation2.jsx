@@ -15,14 +15,13 @@ export default function Navigations() {
 
   return (
     <header className="bg-[#f4f8f9]">
-      <nav aria-label="Global" className="mx-auto flex max-w-7xl items-center justify-between p-3 lg:px-8">
+      <nav aria-label="Global" className="mx-auto flex max-w-7xl items-center justify-between p-1 lg:px-2">
         <div className="flex lg:flex-1">
-          <Link to="/" className="-m-1.5 p-1.5">
-            
+          <Link to="/" className="-m-1.5 p-1.8"> 
             <img
               alt=""
-              src="/assets/navigation/logo.png"
-              className="h-12 w-auto"
+              src="/assets/navigation/logo_5.png"
+              className="h-18 w-40"
             />
           </Link>
         </div>
@@ -51,11 +50,15 @@ export default function Navigations() {
             Admin
           </Link>
         </PopoverGroup>
-        <div className="hidden lg:flex lg:flex-1 lg:justify-end">
-          <a href="#" className="text-sm/6 font-semibold text-blue-900">
+        <div className="hidden lg:flex lg:flex-1 lg:justify-end space-x-4">
+          <a href="#" className="text-sm/6 font-semibold text-blue-900 hover:bg-gray-200">
             Log in <span aria-hidden="true">&rarr;</span>
           </a>
+          <a href="#" className="text-sm/6 font-semibold text-blue-900 hover:bg-gray-200">
+            Sign up <span aria-hidden="true">&rarr;</span>
+          </a>
         </div>
+        
       </nav>
       <Dialog open={mobileMenuOpen} onClose={setMobileMenuOpen} className="lg:hidden">
         <div className="fixed inset-0 z-10" />
@@ -65,7 +68,7 @@ export default function Navigations() {
               <span className="sr-only">Your Company</span>
               <img
                 alt=""
-                src="/assets/navigation/logo.png"
+                src="/assets/navigation/logo_5.png"
                 className="h-8 w-auto"
               />
             </Link>
@@ -80,8 +83,7 @@ export default function Navigations() {
           </div>
           <div className="mt-6 flow-root">
             <div className="-my-6 divide-y divide-gray-500/10">
-              <div className="space-y-2 py-6">
-                
+              <div className="space-y-2 py-6">             
                 <Link
                 to="/"
                   className="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-blue-900 hover:bg-gray-50"
@@ -96,7 +98,7 @@ export default function Navigations() {
                 </Link>
                 <Link
                   to="/tours"
-                  className="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold textbluey-900 hover:bg-gray-50"
+                  className="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-blue-900 hover:bg-gray-50"
                 >
                   Our Tours
                 </Link>
@@ -110,9 +112,15 @@ export default function Navigations() {
               <div className="py-6">
                 <a
                   href="#"
-                  className="-mx-3 block rounded-lg px-3 py-2.5 text-base/7 font-semibold text-gray-900 hover:bg-gray-50"
+                  className="-mx-3 block rounded-lg px-3 py-2.5 text-base/7 font-semibold text-blue-900 hover:bg-gray-50"
                 >
                   Log in
+                </a>
+                <a
+                  href="#"
+                  className="-mx-3 block rounded-lg px-3 py-2.5 text-base/7 font-semibold text-blue-900 hover:bg-gray-50"
+                >
+                  Sign up
                 </a>
               </div>
             </div>

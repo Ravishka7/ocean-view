@@ -13,7 +13,7 @@ function Reservations () {
                     {/* Left Column */}
                     <div className="space-y-6">
                     {/* Top Card */}
-                    <div className="relative rounded-3xl p-8 h-auto flex flex-col justify-between">
+                    <div className="relative rounded-3xl p-4 h-auto flex flex-col justify-between">
                         
                         <div className="space-y-4">
                         <div>

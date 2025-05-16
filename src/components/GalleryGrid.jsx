@@ -3,7 +3,7 @@ import AnimateOnScroll from "@/components/AnimateOnScroll"
 export default function GalleryGrid() {
   return (
     <div className="px-8 py-8 lg:py-16">
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
         {/* Left Column */}
         <AnimateOnScroll>
         <div className="relative rounded-3xl p-8 min-h-[620px] flex items-center justify-center">

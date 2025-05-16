@@ -1,6 +1,7 @@
 import { MapPin, Star } from "lucide-react";
 import { Link } from "react-router";
 
+
 function TourCard(props) {
     return ( <Link
         to={`/tours/${props.tour._id}`}
