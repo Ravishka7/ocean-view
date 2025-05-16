@@ -1,5 +1,6 @@
 import RoomCard from "./RoomCard";
 import { useGetRoomsQuery } from "@/lib/api";
+import AnimateOnScroll from "@/components/AnimateOnScroll"
 
 export default function RoomListings() {
 
@@ -8,6 +9,7 @@ export default function RoomListings() {
 
   if (isLoading) {
     return(<section className="px-8 py-8 lg:py-16">
+      <AnimateOnScroll>
       <div className="mb-12">
         <h2 className="text-3xl md:text-4xl font-bold mb-4 text-blue-900">
           Our Rooms
@@ -16,6 +18,7 @@ export default function RoomListings() {
           Standard Rooms with modern amenities
         </p>
       </div>
+      </AnimateOnScroll>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">    
         <div className="col-span-1 md:col-span-2 lg:col-span-4">
           <p className="text-lg text-muted-foreground">Loading...</p>  
@@ -52,6 +55,7 @@ export default function RoomListings() {
           Standard Rooms with modern amenities
         </p>
       </div>
+      <AnimateOnScroll>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         
       {
@@ -61,6 +65,7 @@ export default function RoomListings() {
       }
         
       </div>
+      </AnimateOnScroll>
     </section>
   );
 }

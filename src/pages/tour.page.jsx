@@ -1,17 +1,11 @@
 import { useParams } from "react-router";
 import { useGetTourByIdQuery } from "@/lib/api";
 import { Card, CardContent } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Skeleton } from "@/components/ui/skeleton";
 import { ScrollArea } from "@/components/ui/scroll-area"
+import AnimateOnScroll from "@/components/AnimateOnScroll"
 
-import {
-  Coffee,
-  MenuIcon as Restaurant,
-  Tv,
-  Wifi,
-} from "lucide-react";
 
 const TourPage = () => {
   const { id } = useParams();
@@ -72,15 +66,16 @@ const TourPage = () => {
   if (error) return <p className="text-red">Error: {error.message}</p>;
 
   return (
+    <AnimateOnScroll>
     <div className="bg-white">
-      <div className="pt-6">
-      <div className="mx-auto max-w-2xl px-4 pt-10 pb-16 sm:px-6 lg:grid lg:max-w-7xl lg:grid-cols-3 lg:grid-rows-[auto_auto_1fr] lg:gap-x-8 lg:px-8 lg:pt-16 lg:pb-24">
+      <div className="pt-1">
+      <div className="mx-auto max-w-2xl px-4 pt-10 pb-16 sm:px-6 lg:grid lg:max-w-7xl lg:grid-cols-3 lg:grid-rows-[auto_auto_1fr] lg:gap-x-8 lg:px-8 lg:pt-10 lg:pb-24">
           <div className="lg:col-span-2 lg:border-r lg:border-gray-200 lg:pr-8">
-            <h1 className="text-2xl font-bold tracking-tight text-gray-900 sm:text-3xl">{tour.name}</h1>
+            <h1 className="text-2xl font-bold tracking-tight text-blue-900 sm:text-3xl">{tour.name}</h1>
           </div>
           </div>
         {/* Image gallery */}
-        <div className="mx-auto mt-6 max-w-2xl sm:px-6 lg:grid lg:max-w-7xl lg:grid-cols-3 lg:gap-x-8 lg:px-8">
+        <div className="mx-auto mt-1 max-w-2xl sm:px-6 lg:grid lg:max-w-7xl lg:grid-cols-3 lg:gap-x-8 lg:px-8">
           
           <img
             alt={tour.name}
@@ -116,12 +111,7 @@ const TourPage = () => {
           <div className="mt-4 lg:row-span-3 lg:mt-0">
             <h2 className="sr-only">Product information</h2>
             {/* <p className="text-3xl tracking-tight text-gray-900">{product.price}</p> */}
-
-            
-            
-
-            
-              
+   
 
               <button
                 type="submit"
@@ -135,38 +125,18 @@ const TourPage = () => {
           <div className="py-10 lg:col-span-2 lg:col-start-1 lg:border-r lg:border-gray-200 lg:pt-6 lg:pr-8 lg:pb-16">
             {/* Description and details */}
             <div>
-              <h3 className="sr-only">Description</h3>
+              <h3 className="text-2xl font-bold tracking-tight">Description</h3>
 
-              <div className="space-y-6">
+              <div className="space-y-6 py-5">
                 <ScrollArea className="text-gray-900 h-[400px] whitespace-pre-wrap">{tour.description}</ScrollArea>
               </div>
             </div>
 
-            {/* <div className="mt-10">
-              <h3 className="text-sm font-medium text-gray-900">Highlights</h3>
-
-              <div className="mt-4">
-                <ul role="list" className="list-disc space-y-2 pl-4 text-sm">
-                  {product.highlights.map((highlight) => (
-                    <li key={highlight} className="text-gray-400">
-                      <span className="text-gray-600">{highlight}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </div>
-
-            <div className="mt-10">
-              <h2 className="text-sm font-medium text-gray-900">Details</h2>
-
-              <div className="mt-4 space-y-6">
-                <p className="text-sm text-gray-600">{product.details}</p>
-              </div>
-            </div> */}
           </div>
         </div>
       </div>
     </div>
+    </AnimateOnScroll>
   )
 };
 

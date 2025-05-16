@@ -1,6 +1,6 @@
 import TourCard from "./TourCard";
 import { useGetToursQuery } from "@/lib/api";
-
+import AnimateOnScroll from "@/components/AnimateOnScroll"
 
 export default function TourListings() {
 
@@ -9,6 +9,7 @@ export default function TourListings() {
 
   if (isLoading) {
     return (<section className="px-8 py-8 lg:py-16">
+      <AnimateOnScroll>
       <div className="mb-12">
         <h2 className="text-3xl md:text-4xl font-bold mb-4 text-blue-900">
           Tours
@@ -18,6 +19,7 @@ export default function TourListings() {
         </p>
         
       </div>
+      </AnimateOnScroll>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
         <div className="col-span-1 md:col-span-2 lg:col-span-4">
           <p className="text-lg text-muted-foreground">Loading...</p>
@@ -50,14 +52,18 @@ export default function TourListings() {
   return (
     <section className="px-8 py-8 lg:py-16">
       <div className="mb-12">
+      
         <h2 className="text-3xl md:text-4xl font-bold mb-4 text-blue-900">
           Tours
         </h2>
+        
+        
         <p className="text-lg text-muted-foreground">
           Choose your perfect tour around Sri Lanka
         </p>
         
       </div>
+      <AnimateOnScroll>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
       {
         tours.map((tour) => {
@@ -65,7 +71,7 @@ export default function TourListings() {
         })
       }  
       </div>
-      
+      </AnimateOnScroll>
     </section>
   );
 };
