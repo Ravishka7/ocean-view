@@ -3,25 +3,24 @@ import Reservations from "@/components/Reservations"
 import Tours from "@/components/Tours"
 import GalleryGrid from "@/components/GalleryGrid"
 import Intro from "@/components/Intro"
+import AnimateOnScroll from "@/components/AnimateOnScroll" // Adjust path as needed
 
-function HomePage() {
+export default function HomePage() {
   return (
     <main>
-      <div className="relative min-h-screen">
+      
+      <AnimateOnScroll>
         <Hero />
-        <img
-          src="/assets/hero/beach_hero.jpg"
-          alt=""
-          className="absolute top-0 left-0 w-full h-full object-cover -z-10"
-        />
-      </div>
-      <Intro />
-      <Reservations />
-      <Tours />
-      <GalleryGrid />
+      </AnimateOnScroll>
+        
+        <Intro />
+      
+        <Reservations />
+      
+        <Tours />
+    
+        <GalleryGrid />
       
     </main>
   )
 }
-
-export default HomePage

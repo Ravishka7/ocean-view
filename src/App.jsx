@@ -12,9 +12,9 @@ function App() {
   return (
     <>
       <Navigation />
-      <div className="relative min-h-screen">
+      {/* <div className="relative min-h-screen">
         <Hero />
-      </div>
+      </div> */}
       
       <Introduction />
       <Reservations />
