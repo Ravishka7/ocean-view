@@ -4,6 +4,7 @@ import './index.css';
 import { BrowserRouter, Routes, Route } from "react-router";
 import { store } from './lib/store';
 import { Provider } from 'react-redux';
+import { ClerkProvider } from '@clerk/clerk-react';
 
 import HomePage from './pages/home.page';
 import SignUpPage from './pages/sign-up.page';
@@ -22,38 +23,51 @@ import UpdateRoomPage from './pages/update-room.page';
 
 import RootLayout from './layouts/root-layout.layout';
 import MainLayout from './layouts/main.layout';
+import ProtectedLayout from './layouts/protected.layout';
 
+
+
+const PUBLISHABLE_KEY = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY;
+if (!PUBLISHABLE_KEY) {
+  throw new Error('Add your Clerk Publishable Key to .env file');
+}
 
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <Provider store={store}>
-      <BrowserRouter>
-        <Routes>
-          <Route element={<RootLayout />}>
+    <ClerkProvider publishableKey={PUBLISHABLE_KEY}>
+      <Provider store={store}>
+        <BrowserRouter>
+          <Routes>
 
-            <Route element={<MainLayout />}>
-              <Route path="/" element={<HomePage />} />
-              <Route path="/rooms" element={<RoomsPage />} />
-              <Route path="/tours" element={<ToursPage />} />
-              <Route path="/admin" element={<AdminPage />} />
-              <Route path="/rooms/:id" element={<RoomPage />} />
-              <Route path="/tours/:id" element={<TourPage />} />
-              <Route path="/tours/create" element={<CreateTourPage />} />
-              <Route path="/rooms/create" element={<CreateRoomPage />} />
-              <Route path="/tours/update" element={<AdminTourListPage />} />
-              <Route path="/tours/update/:id" element={<UpdateTourPage />} />
-              <Route path="rooms/update" element={<AdminRoomListPage />} />
-              <Route path="/rooms/update/:id" element={<UpdateRoomPage />} />
+            <Route element={<RootLayout />}>
 
+                <Route element={<MainLayout />}>
+                  <Route path="/" element={<HomePage />} />
+                  <Route path="/rooms" element={<RoomsPage />} />
+                  <Route path="/tours" element={<ToursPage />} />
+                  <Route path="/rooms/:id" element={<RoomPage />} />
+                  <Route path="/tours/:id" element={<TourPage />} />
+                  
+                  <Route element={<ProtectedLayout />}>
+                    <Route path="/admin" element={<AdminPage />} />
+                    <Route path="/tours/create" element={<CreateTourPage />} />
+                    <Route path="/rooms/create" element={<CreateRoomPage />} />
+                    <Route path="/tours/update" element={<AdminTourListPage />} />
+                    <Route path="/tours/update/:id" element={<UpdateTourPage />} />
+                    <Route path="rooms/update" element={<AdminRoomListPage />} />
+                    <Route path="/rooms/update/:id" element={<UpdateRoomPage />} />
+                  </Route>
+              
+                </Route>
+
+              <Route path="/sign-in" element={<SignInPage />} />
+              <Route path="/sign-up" element={<SignUpPage />} />
             </Route>
 
-            <Route path="/sign-in" element={<SignInPage />} />
-            <Route path="/sign-out" element={<SignUpPage />} />
-          </Route>
-
-        </Routes>
-      </BrowserRouter>
-    </Provider>
+          </Routes>
+        </BrowserRouter>
+      </Provider>
+    </ClerkProvider> 
   </StrictMode>,
 );

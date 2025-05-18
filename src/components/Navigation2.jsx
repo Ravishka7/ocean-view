@@ -1,14 +1,16 @@
 import { Link } from "react-router";
-import { useState } from 'react'
+import { useState } from 'react';
 import {
   Dialog,
   DialogPanel,
   PopoverGroup,
-} from '@headlessui/react'
+} from '@headlessui/react';
 import {
   Bars3Icon,
   XMarkIcon,
-} from '@heroicons/react/24/outline'
+} from '@heroicons/react/24/outline';
+import { SignedIn, SignedOut, UserButton } from "@clerk/clerk-react";
+
 
 export default function Navigations() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
@@ -46,17 +48,32 @@ export default function Navigations() {
           <Link to="/tours" className="text-sm/6 font-semibold text-blue-900 hover:bg-gray-200">
             Our Tours
           </Link>
+
+          <SignedIn>
           <Link to="/admin" className="text-sm/6 font-semibold text-blue-900 hover:bg-gray-200">
             Admin
           </Link>
+          </SignedIn>
+
         </PopoverGroup>
+
         <div className="hidden lg:flex lg:flex-1 lg:justify-end space-x-4">
-          <a href="#" className="text-sm/6 font-semibold text-blue-900 hover:bg-gray-200">
-            Log in <span aria-hidden="true">&rarr;</span>
-          </a>
-          <a href="#" className="text-sm/6 font-semibold text-blue-900 hover:bg-gray-200">
-            Sign up <span aria-hidden="true">&rarr;</span>
-          </a>
+          <SignedIn>
+            <UserButton />
+            <Link to="/" className="text-sm/6 font-semibold text-blue-900 hover:bg-gray-200">
+              My Bookings <span aria-hidden="true">&rarr;</span>
+            </Link>
+          </SignedIn>
+          
+          <SignedOut>
+            <Link to="/sign-in" className="text-sm/6 font-semibold text-blue-900 hover:bg-gray-200">
+              Sign in <span aria-hidden="true">&rarr;</span>
+            </Link>
+            <Link to="/sign-up" className="text-sm/6 font-semibold text-blue-900 hover:bg-gray-200">
+              Sign up <span aria-hidden="true">&rarr;</span>
+            </Link>
+          </SignedOut>
+          
         </div>
         
       </nav>
@@ -102,26 +119,41 @@ export default function Navigations() {
                 >
                   Our Tours
                 </Link>
+                <SignedIn>
                 <Link
                   to="/admin"
                   className="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-blue-900 hover:bg-gray-50"
                 >
                   Admin
                 </Link>
+                </SignedIn>
               </div>
               <div className="py-6">
-                <a
-                  href="#"
-                  className="-mx-3 block rounded-lg px-3 py-2.5 text-base/7 font-semibold text-blue-900 hover:bg-gray-50"
-                >
-                  Log in
-                </a>
-                <a
-                  href="#"
-                  className="-mx-3 block rounded-lg px-3 py-2.5 text-base/7 font-semibold text-blue-900 hover:bg-gray-50"
-                >
-                  Sign up
-                </a>
+                <SignedIn>
+                  <UserButton />
+                  <Link
+                    to="/"
+                    className="-mx-3 block rounded-lg px-3 py-2.5 text-base/7 font-semibold text-blue-900 hover:bg-gray-50"
+                  >
+                    My Bookings
+                  </Link>
+                </SignedIn>
+
+                <SignedOut>
+                  <Link
+                    to="/sign-in"
+                    className="-mx-3 block rounded-lg px-3 py-2.5 text-base/7 font-semibold text-blue-900 hover:bg-gray-50"
+                  >
+                    Sign in
+                  </Link>
+                  <Link
+                    to="/sign-up"
+                    className="-mx-3 block rounded-lg px-3 py-2.5 text-base/7 font-semibold text-blue-900 hover:bg-gray-50"
+                  >
+                    Sign up
+                  </Link>
+                </SignedOut>
+                
               </div>
             </div>
           </div>
