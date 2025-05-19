@@ -9,11 +9,12 @@ import {
   Bars3Icon,
   XMarkIcon,
 } from '@heroicons/react/24/outline';
-import { SignedIn, SignedOut, UserButton } from "@clerk/clerk-react";
+import { SignedIn, SignedOut, UserButton, useUser } from "@clerk/clerk-react";
 
 
 export default function Navigations() {
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const { user } = useUser();
 
   return (
     <header className="bg-[#f4f8f9]">
@@ -49,11 +50,11 @@ export default function Navigations() {
             Our Tours
           </Link>
 
-          <SignedIn>
-          <Link to="/admin" className="text-sm/6 font-semibold text-blue-900 hover:bg-gray-200">
+          
+          {user?.publicMetadata?.role === "admin" && (<Link to="/admin" className="text-sm/6 font-semibold text-blue-900 hover:bg-gray-200">
             Admin
-          </Link>
-          </SignedIn>
+          </Link>)}
+          
 
         </PopoverGroup>
 

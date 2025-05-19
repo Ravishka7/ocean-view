@@ -24,6 +24,7 @@ import UpdateRoomPage from './pages/update-room.page';
 import RootLayout from './layouts/root-layout.layout';
 import MainLayout from './layouts/main.layout';
 import ProtectedLayout from './layouts/protected.layout';
+import AdminProtectedLayout from './layouts/admin-protected.layout';
 
 
 
@@ -50,13 +51,16 @@ createRoot(document.getElementById('root')).render(
                   <Route path="/tours/:id" element={<TourPage />} />
                   
                   <Route element={<ProtectedLayout />}>
-                    <Route path="/admin" element={<AdminPage />} />
-                    <Route path="/tours/create" element={<CreateTourPage />} />
-                    <Route path="/rooms/create" element={<CreateRoomPage />} />
-                    <Route path="/tours/update" element={<AdminTourListPage />} />
-                    <Route path="/tours/update/:id" element={<UpdateTourPage />} />
-                    <Route path="rooms/update" element={<AdminRoomListPage />} />
-                    <Route path="/rooms/update/:id" element={<UpdateRoomPage />} />
+                  //Need to implement route of MyBookings Page here
+                    <Route element={<AdminProtectedLayout />}>
+                      <Route path="/admin" element={<AdminPage />} />
+                      <Route path="/tours/create" element={<CreateTourPage />} />
+                      <Route path="/rooms/create" element={<CreateRoomPage />} />
+                      <Route path="/tours/update" element={<AdminTourListPage />} />
+                      <Route path="/tours/update/:id" element={<UpdateTourPage />} />
+                      <Route path="rooms/update" element={<AdminRoomListPage />} />
+                      <Route path="/rooms/update/:id" element={<UpdateRoomPage />} />
+                    </Route>  
                   </Route>
               
                 </Route>
