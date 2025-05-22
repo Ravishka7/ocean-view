@@ -65,6 +65,13 @@ export const Api = createApi({
                 method: "DELETE",
             }),
         }),
+        createRoomBooking: builder.mutation({
+            query: (roomBooking) => ({
+                url: "roomBookings",
+                method: "POST",
+                body: roomBooking,
+            }),
+        }),    
     }),
 });
 
@@ -79,4 +86,5 @@ export const {
     useUpdateRoomMutation,
     useDeleteTourMutation,
     useDeleteRoomMutation,
+    useCreateRoomBookingMutation,
 } = Api;

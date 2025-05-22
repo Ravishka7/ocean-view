@@ -40,18 +40,18 @@ export default function Navigations() {
         </div>
         <PopoverGroup className="hidden lg:flex lg:gap-x-12">
 
-          <Link to="/" className="text-sm/6 font-semibold text-blue-900 hover:bg-gray-200">
+          <Link to="/" className="text-sm/6 font-semibold text-blue-900 hover:text-blue-600">
             Home
           </Link>
-          <Link to="/rooms" className="text-sm/6 font-semibold text-blue-900 hover:bg-gray-200">
+          <Link to="/rooms" className="text-sm/6 font-semibold text-blue-900 hover:text-blue-600">
             Accomodations
           </Link>
-          <Link to="/tours" className="text-sm/6 font-semibold text-blue-900 hover:bg-gray-200">
+          <Link to="/tours" className="text-sm/6 font-semibold text-blue-900 hover:hover:text-blue-600">
             Our Tours
           </Link>
 
           
-          {user?.publicMetadata?.role === "admin" && (<Link to="/admin" className="text-sm/6 font-semibold text-blue-900 hover:bg-gray-200">
+          {user?.publicMetadata?.role === "admin" && (<Link to="/admin" className="text-sm/6 font-semibold text-blue-900 hover:text-blue-600">
             Admin
           </Link>)}
           
@@ -61,16 +61,16 @@ export default function Navigations() {
         <div className="hidden lg:flex lg:flex-1 lg:justify-end space-x-4">
           <SignedIn>
             <UserButton />
-            <Link to="/" className="text-sm/6 font-semibold text-blue-900 hover:bg-gray-200">
+            <Link to="/bookings/:id" className="text-sm/6 font-semibold text-blue-900 hover:hover:text-blue-600">
               My Bookings <span aria-hidden="true">&rarr;</span>
             </Link>
           </SignedIn>
           
           <SignedOut>
-            <Link to="/sign-in" className="text-sm/6 font-semibold text-blue-900 hover:bg-gray-200">
+            <Link to="/sign-in" className="text-sm/6 font-semibold text-blue-900 hover:text-blue-600">
               Sign in <span aria-hidden="true">&rarr;</span>
             </Link>
-            <Link to="/sign-up" className="text-sm/6 font-semibold text-blue-900 hover:bg-gray-200">
+            <Link to="/sign-up" className="text-sm/6 font-semibold text-blue-900 hover:text-blue-600">
               Sign up <span aria-hidden="true">&rarr;</span>
             </Link>
           </SignedOut>
@@ -104,26 +104,26 @@ export default function Navigations() {
               <div className="space-y-2 py-6">             
                 <Link
                 to="/"
-                  className="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-blue-900 hover:bg-gray-50"
+                  className="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-blue-900 hover:text-blue-600"
                 >
                   Home
                 </Link>
                 <Link
                   to="/rooms"
-                  className="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-blue-900 hover:bg-gray-50"
+                  className="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-blue-900 hover:text-blue-600"
                 >
                   Accomodations
                 </Link>
                 <Link
                   to="/tours"
-                  className="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-blue-900 hover:bg-gray-50"
+                  className="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-blue-900 hover:text-blue-600"
                 >
                   Our Tours
                 </Link>
                 <SignedIn>
                 <Link
                   to="/admin"
-                  className="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-blue-900 hover:bg-gray-50"
+                  className="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-blue-900 hover:text-blue-600"
                 >
                   Admin
                 </Link>
@@ -134,7 +134,7 @@ export default function Navigations() {
                   <UserButton />
                   <Link
                     to="/"
-                    className="-mx-3 block rounded-lg px-3 py-2.5 text-base/7 font-semibold text-blue-900 hover:bg-gray-50"
+                    className="-mx-3 block rounded-lg px-3 py-2.5 text-base/7 font-semibold text-blue-900 hover:text-blue-600"
                   >
                     My Bookings
                   </Link>
@@ -143,13 +143,13 @@ export default function Navigations() {
                 <SignedOut>
                   <Link
                     to="/sign-in"
-                    className="-mx-3 block rounded-lg px-3 py-2.5 text-base/7 font-semibold text-blue-900 hover:bg-gray-50"
+                    className="-mx-3 block rounded-lg px-3 py-2.5 text-base/7 font-semibold text-blue-900 hover:text-blue-600"
                   >
                     Sign in
                   </Link>
                   <Link
                     to="/sign-up"
-                    className="-mx-3 block rounded-lg px-3 py-2.5 text-base/7 font-semibold text-blue-900 hover:bg-gray-50"
+                    className="-mx-3 block rounded-lg px-3 py-2.5 text-base/7 font-semibold text-blue-900 hover:text-blue-600"
                   >
                     Sign up
                   </Link>

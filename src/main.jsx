@@ -20,11 +20,13 @@ import AdminTourListPage from './pages/adminTourList.page';
 import UpdateTourPage from './pages/update-tour.page';
 import AdminRoomListPage from './pages/adminRoomList.page';
 import UpdateRoomPage from './pages/update-room.page';
+import MyBookings from './pages/roomBookings.page';
 
 import RootLayout from './layouts/root-layout.layout';
 import MainLayout from './layouts/main.layout';
 import ProtectedLayout from './layouts/protected.layout';
 import AdminProtectedLayout from './layouts/admin-protected.layout';
+import RoomBookPage from './pages/roomBook.page';
 
 
 
@@ -51,6 +53,8 @@ createRoot(document.getElementById('root')).render(
                   <Route path="/tours/:id" element={<TourPage />} />
                   
                   <Route element={<ProtectedLayout />}>
+                    <Route path="/bookings" element={<RoomBookPage />} />
+                    <Route path="/bookings/:id" element={<MyBookings />} />
                   //Need to implement route of MyBookings Page here
                     <Route element={<AdminProtectedLayout />}>
                       <Route path="/admin" element={<AdminPage />} />
